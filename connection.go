@@ -30,6 +30,11 @@ type Person struct {
 	LastName    string `json:"last_name"`
 	DateOfBirth string `json:"date_of_birth"`
 	Sex         string `json:"sex"`
+	City        string `json:"city"`
+}
+
+type Delete struct {
+	Email string `json:"email" binding:"required"`
 }
 type vaccination struct {
 	Recipient       string `json:"recipient"`
@@ -62,6 +67,9 @@ func setupRoutes(r *gin.Engine) {
 	r.GET("/person", PersonHandler)
 	r.GET("/recipient", recipientHandler)
 	r.GET("/vaccinated", vaccinatedHandler)
+	r.POST("/addnursedetail", NurseDetails)
+	r.DELETE("/deleteuser", DeleteUser)
+
 }
 
 func createDBConnection() {
